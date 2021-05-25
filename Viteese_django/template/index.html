@@ -1,0 +1,368 @@
+
+{%extends 'base.html'%}
+{%block content%}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<!-- Font Awesome -->
+
+<!------ Include the above in your HEAD tag ---------->
+
+  <!-- Navbar content -->
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd float = right;">
+  <!-- Navbar content -->
+     <div class="col-xs-2 col-sm-2 col-md-2">
+        <input type="submit" class="btn btn-lg btn-success btn-block" value="Register" id="loginbtn" >
+
+					</div>
+</nav>
+<div class="container">
+
+
+<div class="row" style="margin-top:20px">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<form role="form">
+			<fieldset>
+                {% load static %}<img src="{% static 'media/logo.png' %}" alt="logo" width="100" height="100">
+				<h2 style="color:blue;">SPEND<span>AUTOMATION</span></h2>
+				<hr class="colorgraph">
+				<div class="form-group">
+                    <input type="email" name="email1" id="email1" class="form-control input-lg" placeholder="Email Address"/>
+                    <strong class =" error1_keyup" id="enter_email11" style="display:none;color:#FF0000;font-size: 15px; margin-left: 1px;">Please enter email</strong>
+                    <strong class =" error1_keyup" id="enter_email12" style="display:none;color:#FF0000;font-size: 15px; margin-left: 1px;">Email does not exists</strong>
+				</div>
+				<div class="form-group">
+                    <input type="password" name="password2" id="password2" class="form-control input-lg" placeholder="Password" autocomplete="on">
+                    <strong class =" error1_keyup" id="enter_pass11" style="display:none;color:#FF0000;font-size: 15px; margin-left: 1px;">Password is incorrect</strong>
+                    <strong class =" error1_keyup" id="enter_pass12" style="display:none;color:#FF0000;font-size: 15px; margin-left: 1px;">Please enter password</strong>
+
+				</div>
+				<span class="button-checkbox">
+					<button type="button" class="btn" data-color="info">Remember Me</button>
+                    <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
+					<a href="" class="btn btn-link pull-right">Forgot Password?</a>
+				</span>
+				<hr class="colorgraph">
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+                        <input type="button"id="submit" class="btn btn-lg btn-success btn-block" value="Sign In">
+					</div>
+
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+
+</div>
+ <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; SpendAutomation 2021</span>
+                    </div>
+                </div>
+            </footer>
+
+
+  <!-- Trigger the modal with a button -->
+
+
+  <!-- Modal -->
+<div class="container">
+  <div class="modal fade" id="login" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #6157D8;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="color: white">Sign Up</h4>
+        </div>
+
+            <div class="modal-body heig">
+                <label for="supplier_business_name"><span class="req">* </span> Supplier Business Name: </label>
+                    <input class="form-control" type="text" name="supplier_business_name" id = "supplier_business_name" onkeyup = "Validate(this)" required >
+                        <div id="errFirst"></div>
+                        <strong class =" error1_keyup" id="enter_fname" style="display:none;color:#FF0000;font-size: 15px; margin-left: 1px;">Please Enter Business Name</strong>
+            </div>
+
+            <div class="modal-body heig">
+                <label for="supplier_address"><span class="req">* </span> Supplier Address: </label>
+                    <input class="form-control" type="text" name="supplier_address" id = "supplier_address" onkeyup = "Validate(this)" placeholder="" required >
+                        <div id="errLast"></div>
+                        <strong class =" error1_keyup" id="enter_lname" style="display:none;color:#FF0000;font-size: 15px; margin-left: 1px;">Please Enter Address</strong>
+            </div>
+            <div class="modal-body heig">
+                <label for="representaive_full_name"><span class="req">* </span> Representaive Full Name: </label>
+                    <input class="form-control" type="text" name="supplier_address" id = "representaive_full_name" onkeyup = "Validate(this)" placeholder="" required >
+                        <div id="fullerr"></div>
+                        <strong class =" error1_keyup" id="representaive_full_name_" style="display:none;color:#FF0000;font-size: 15px; margin-left: 1px;">Please Enter Address</strong>
+            </div>
+            <div class="modal-body heig">
+                <label for="email"><span class="req">* </span> Email Address: </label>
+                    <input class="form-control" required type="text" name="email" id = "email">
+                        <div class="status" id="status"></div>
+                        <strong class =" error1_keyup" id="enter_email1" style="display:none;color:#FF0000;font-size: 15px; margin-left: 1px;">Please enter email </strong>
+                        <strong class =" error1_keyup" id="enter_email2" style="display:none;color:#FF0000;font-size: 15px; margin-left: 1px;">Email already exists</strong>
+                        <strong class =" error1_keyup" id="enter_email3" style="display:none;color:#FF0000;font-size: 15px; margin-left: 1px;">You Cant Use Admin Login Email</strong>
+            </div>
+
+
+<form>
+            <div class="modal-body heig">
+                <label for="password1"><span class="req">* </span> Password: </label>
+                    <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="password1" autocomplete="on">
+
+                <strong class =" error1_keyup" id="enter_password" style="display:none;color:#FF0000;font-size: 15px; margin-left: 1px;">Please enter password</strong>
+
+            </div>
+
+  </form>
+
+    <div class="modal-footer">
+
+                    <input class="btn btn-success" type="button" name="submit_reg" value="Register" id="register">
+                    <input class="btn btn-close" type="button" name="submit_reg" value="close" id="close">
+
+
+            </div>
+
+
+ </div>
+
+
+</div>
+ <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; SpendAutomation 2021</span>
+                    </div>
+                </div>
+            </footer>
+<script type="text/javascript">
+$("#loginbtn").click(function(){
+    console.log("jfqytvukl")
+    alert("hihi")
+ $("#login").modal('show');
+ console.log("jfqytvukl")
+
+
+})
+$("#close").click(function(){
+    $("#login").modal('hide');
+})
+
+function email_validate(email)
+{
+var regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+
+    if(regMail.test(email) == false)
+    {
+    document.getElementById("status").innerHTML    = "<span class='warning'>Email address is not valid yet.</span>";
+    }
+    else
+    {
+    document.getElementById("status").innerHTML = "<span class='valid'>Thanks, you have entered a valid Email address!</span>";
+    }
+}
+
+$("#register").click(function(){
+    var supplier_business_name = $("#supplier_business_name").val()
+    var supplier_address = $("#supplier_address").val()
+    var representaive_full_name = $("#representaive_full_name").val()
+    var email = $("#email").val()
+    console.log(email)
+    var password = $("#password1").val()
+    if (supplier_business_name == ''){
+        $("#enter_fname").show()
+    }
+       else if (supplier_address == ""){
+        $("#enter_lname").show()
+    }
+    else if (representaive_full_name == ""){
+        $("#representaive_full_name_").show()
+    }
+   else if(password=="")
+    {
+         $("#enter_password").show()
+    }
+    else if(email == "")
+    {
+       $("#enter_email1").show()
+    }
+    else{
+    $.ajax({
+        url:'emailcheck/',
+        type:'POST',
+        data:{
+            'email':email,
+        },
+        success:function(response){
+            console.log("response",response.adminlogin)
+            if (response.check_data == true){
+
+                $("#enter_email2").show()
+            }
+            else if (response.adminlogin == 'true'){
+             $("#enter_email3").show()
+             }
+            else{
+                console.log("elseee")
+                 $.ajax({
+        url:'register/',
+        type:'POST',
+        data:{
+            'supplier_business_name':supplier_business_name,
+            'supplier_address':supplier_address,
+            'representaive_full_name':representaive_full_name,
+            'email':email,
+            'password':password,
+        },
+        success:function(response){
+            console.log("refgister done")
+            $("#modal_success").modal('show')
+            $("#supplier_business_name").val("")
+            $("#supplier_address").val("")
+            $("#representaive_full_name").val("")
+            $("#email").val("")
+            $("#password1").val("")
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+                console.log("err")
+            }
+
+    })
+            }
+        },
+         error: function (xhr, ajaxOptions, thrownError) {
+                console.log("err")
+            }
+    })
+    }
+
+
+})
+
+//validates text only
+function Validate(txt) {
+    txt.value = txt.value.replace(/[^a-zA-Z-'\n\r.]+/g,' ');
+}
+
+$("#supplier_business_name").keyup(function(){
+ $("#enter_fname").hide()
+
+})
+$("#supplier_address").keyup(function(){
+ $("#enter_lname").hide()
+
+})
+$("#representaive_full_name").keyup(function(){
+ $("#enter_phone").hide()
+
+})
+$("#email").keyup(function(){
+ $("#enter_email1").hide()
+ $("#enter_email2").hide()
+
+})
+$("#password1").keyup(function(){
+ $("#enter_password").hide()
+
+})
+
+$("#email1").keyup(function(){
+ $("#enter_email11").hide()
+  $("#enter_email12").hide()
+
+})
+$("#pass2").keyup(function(){
+ $("#enter_pass11").hide()
+ $("#enter_pass12").hide()
+
+
+})
+$("#submit").click(function(){
+    var email = $("#email1").val()
+    console.log(email)
+    var password = $("#password2").val()
+    console.log(password)
+
+if (email==''){
+    $("#enter_email11").show()
+}
+else if (password==''){
+    $("#enter_pass12").show()
+}else{
+    $.ajax({
+        url:'/emailcheck/',
+        type:'POST',
+        data:{
+            'email':email,
+            'password':password,
+        },
+        success :function(response){
+            console.log(response.check_data)
+            if (response.check_data==true){
+
+                // $("#login").modal('hide');
+                $.ajax({
+                    url:'/login/',
+                    type:'POST',
+                    data:{
+                        'email':email,
+                        'password':password,
+                    },
+                    success:function(response){
+                       console.log(response)
+                        if (response=='error') {
+                 $("#enter_pass11").show()
+            }
+                       else if (response=="success"){
+                            window.location.href = "profileview/";
+                        }
+                        else if  (response=="admin"){
+                            window.location.href = "adminpage/";
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                console.log("err")
+            }
+
+                })
+
+            }
+            else {
+                 $("#enter_email12").show()
+            }
+        },
+
+    })
+}
+})
+$("#email1").keyup(function(){
+ $("#enter_email11").hide()
+  $("#enter_email12").hide()
+
+})
+$("#pass2").keyup(function(){
+ $("#enter_pass11").hide()
+ $("#enter_pass12").hide()
+
+
+})
+
+
+
+</script>
+{%endblock%}
+  </div>
+</div>
